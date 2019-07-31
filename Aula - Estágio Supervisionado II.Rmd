@@ -376,9 +376,16 @@ Estatística descritiva:
 
 * média = `mean()`
 * desvio-padrão = `sd()`
+* mediana = `median()`
 * mínimo = `min()`
 * máximo = `max()`
 * quantil = `quantile()`
+
+É possível fazer um resumo das estatísticas com o comando `summary()`
+
+```{r}
+summary(base$valores)
+```
 
 ## Operações condicionais
 ### Operadores lógicas
