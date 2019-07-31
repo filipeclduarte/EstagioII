@@ -355,7 +355,7 @@ A importação de dados mais comum se dá por meio de arquivos `.csv`, utilizand
 Importaremos os arquivo `base_sin.csv`. 
 
 ```{r}
-base <- read.csv2("base_sin.csv", header = TRUE, sep = ",")
+base <- read.csv("base_sin.csv", header = TRUE, sep = ",")
 ```
 
 Agora vamos ver os dados
@@ -369,10 +369,16 @@ Para visualizar a estrutura dos dados, usaremos a função `str()`.
 str(base)
 ```
 
-
 ## Funções básicas
-### Funções Matemáticas
 ### Funções estatísticas
+
+Estatística descritiva:
+
+* média = `mean()`
+* desvio-padrão = `sd()`
+* mínimo = `min()`
+* máximo = `max()`
+* quantil = `quantile()`
 
 ## Operações condicionais
 ### Operadores lógicas
