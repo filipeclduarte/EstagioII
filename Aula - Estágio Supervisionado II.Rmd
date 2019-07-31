@@ -350,12 +350,23 @@ notas
 
 ## Importando dados
 
-A importação de dados mais comum se dá por meio de arquivos `.csv`, utilizando a função `read.csv()`. Contudo, é possível importar arquivos em `.txt` usando a função `read.table()`. 
+A importação de dados mais comum se dá por meio de arquivos `.csv`, utilizando a função `read.csv2()`. Contudo, é possível importar arquivos em `.txt` usando a função `read.table()`. 
 
 Importaremos os arquivo `base_sin.csv`. 
 
 ```{r}
-base <- read.csv("base_sin.csv", header = TRUE, sep = "")
+base <- read.csv2("base_sin.csv", header = TRUE, sep = ",")
+```
+
+Agora vamos ver os dados
+
+```{r}
+base
+```
+
+Para visualizar a estrutura dos dados, usaremos a função `str()`.
+```{r}
+str(base)
 ```
 
 
