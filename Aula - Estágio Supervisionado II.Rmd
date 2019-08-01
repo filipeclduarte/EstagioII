@@ -7,7 +7,6 @@ editor_options:
   chunk_output_type: inline
 ---
 
-
 # Introdução
 
 Vamos estudar conceitos e operações básicas da linguagem R antes de adentrar no conteúdo atuarial. Sendo assim, vamos estudar inicialmente:
@@ -33,8 +32,13 @@ Após essa breve introdução, estudaremos como utilizar a linguagem R para reso
 A criação de variáveis no `R` é realizada da forma a seguir:
 
 ```{r}
+x <- 10 
+```
+
+```{r}
 # Criar a variável x que receberá o valor 10
 x <- 10
+x
 ```
 
 Usa-se o símbolo `<-` ou `=` para atribuir o valor 10 à `x`.
@@ -43,10 +47,24 @@ Se desejar escrever algum comentário no bloco de código, use `#` antes do text
 
 Ex.: Crie duas variáveis, X (valor) e N (quantidade), recebendo 50 e 3, respectivamente. Faça também um comentário, para cada variável, detalhando o seu nome:
 
+
 ```{r}
+#meu comentário
 X <- 50 
 N <- 3
+X
+N
 ```
+
+```{r}
+Y
+Y <- 100
+Y ** 5
+Y ^ 2
+options(scipen = 999)
+Y ** 5
+```
+
 
 ### Operações matemáticas
 
@@ -58,20 +76,25 @@ Vamos praticar a seguir:
 
 ```{r}
 # adição: 2 + 2
-2+2
+var <- 2+2
+var
 
 # subtração: 50 - 5
-50-5
+var2 <- 50-5
+var2
 
 # multiplicação: 10 * 40
-10*40
+d <- 10*40
+d
 
 # divisão: 55 / 3
-55/3
+var_divisao <- 55/3
+var_divisao
 
 # exponenciação: 2 ^ 5
-2^5
-
+VarExp <- 2^5
+2**5
+VarExp
 # resto da divisão: 6 %% 4
 6%%4
 
@@ -83,39 +106,47 @@ Sua vez de exercitar:
 
 ```{r}
 # adicione 30 à X
-
+X + 30
 ```
 
 ```{r}
 # Subtraia 3 de N
-
+N-3 
 ```
 
 ```{r}
 # Eleve 3 ao cubo
-
+3^3
+3**3
 ```
 
 ```{r}
-# calcule o resto da divisão de 30 por 7
-
+# mostre o resto da divisão de 30 por 7
+30%%7
 ```
 
 ```{r}
-# Calcule o valor da divisão inteira de 9 por 4
-
+# mostre o valor da divisão inteira de 9 por 4
+9%/%4
 ```
 
 Para realizar várias operações matemáticas, como por exemplo 2*5 + 3^5, é importante colocar os parênteses `()` entre as operações:
 
 ```{r}
+(3*X) + (N^4)
+
+((2 + X)^2) - ((N/10) + (X^2))^5
+```
+
+
+```{r}
 (2*5) + 3^5
 ```
 
-Então, calcule o produto de `N` e `X`, adicione a divisão de 9 por 10 e multiplique resultado pela pela subtração de 5 por 2. 
+Então, calcule o produto de `N` e `X`, adicione a divisão de 9 por 10 e multiplique o resultado pela pela subtração de 5 por 2. 
 
 ```{r}
-
+((N*X)+(9/10))*(5-2)
 ```
 
 
@@ -128,6 +159,18 @@ O objeto mais comum no `R` é o vetor, podendo ser representado por:
 * números complexos
 * valores booleanos - TRUE ou FALSE
 * caracteres
+
+```{r}
+meu_nome <- "Filipe"
+meu_nome
+MeuNome <- "Filip"
+MeuNome
+
+print(meu_nome)
+meu_nome
+meu_nome == MeuNome 
+```
+
 
 ### Vetor
 

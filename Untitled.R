@@ -20,3 +20,6 @@ severidade
 c(severidade[1,2], severidade[2:nrow(severidade),2] - severidade[1:nrow(severidade-1)-1,2])
 
 sum(c(severidade[1,2], severidade[2:nrow(severidade),2] - severidade[1:nrow(severidade-1)-1,2]))
+
+
+
