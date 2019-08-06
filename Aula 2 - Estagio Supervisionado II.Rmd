@@ -1,0 +1,156 @@
+title: "Estágio Supervisionado II"
+output:
+  html_document:
+    df_print: paged
+editor_options: 
+  chunk_output_type: inline
+---
+
+## 5. Operações Condicionais
+
+Os operadores de comparação são:
+
+* Igualdade: ==
+* Não igual: !=
+* Menor: <
+* Maior: >
+* Menor ou igual: <=
+* Maior ou igual: >=
+
+Operadores lógicos são:
+
+* E: &
+* Ou: |
+
+A partir desses operadores, utilizaremos a função `if()` para avaliar as condições lógicas.
+
+A sintaxe de uma operação lógica pode ser expressa a partir dessa função `if()`, em que o seu argumento será a condição com operadores de comparação e/ou lógicos. 
+
+Se quiser rodar um determinado código apenas se a condição for verdadeira e se a condição for falsa, queremos que nada seja feito, então:
+
+if (condição) {
+    comandos a serem executados caso a codição seja verdadeira
+}
+
+Exemplo: Imprima (use a função `paste()`) o valor da variável **C** se o seu valor for menor do que 10:
+```{r}
+# testando C = 7
+C <- 7
+if(C<10){
+  paste(C)
+}
+# testando C = 12
+C <- 12
+if(C<10){
+  paste(C)
+}
+```
+
+Perceba que ao atribuir o valor 12 à C, nada acontece. Isso ocorre porque a condição (C<10) não foi verdadeira. 
+
+Esse tipo de operação não é muito comum na prática, na verdade você gostaria que algo fosse realizado quando a condição não fosse verdadeira. Neste caso, utiliza-se a operação `else` após a chave "}" da função `if()`. Por exemplo, no exemplo anterior caso a condição não seja verificada, peça para imprimir a frase: "O valor de C é maior ou igual a 10!":
+
+```{r}
+C <- 12
+if(C<10){
+  paste(C)
+}else{
+  paste("O valor de C é maior ou igual a 10!")
+}
+```
+
+Vamos utilizar outros operadores de comparação. Escreva um código que escreve o valor de **D** se ele for igual a 5. Se o valor de **D** for diferente de 5, imprima: "tente outra vez!"
+
+```{r}
+D <- 5
+if(D == 5){
+  paste(D)
+}else{
+  paste("tente outra vez!")
+}
+
+D <- 6
+if(D == 5){
+  paste(D)
+}else{
+  paste("tente outra vez!")
+}
+
+```
+
+Quando desejar utilizar algum operador lógico, se você desejar que duas condições sejam verdadeiras, utilize e `&&`, ao passo que quando desejar que pelo menos uma seja verdadeira, use `|`. Veremos abaixo como aplicar esse operadores ao criar um teste que se **C** for igual a 7 e **D** for igual a 5, o programa imprimirá ambos os valores com um "verdadeiro" em seguida. Se pelo menos uma das condições não forem verdadeiras, imprima os valores e "falso" em seguida. 
+
+```{r}
+C <- 7
+D <- 5
+if(C==7 & D==5){
+  paste("C =",C," e ","D =",D," ","verdadeiro")
+}else{
+  paste("C =",C," e ","D =",D," ","falso")
+}
+# testar falso
+C <- 6
+if(C==7 & D==5){
+  paste("C =",C," e ","D =",D," ","verdadeiro")
+}else{
+  paste("C =",C," e ","D =",D," ","falso")
+}
+
+```
+
+Agora, faça a mesma função sendo que substitua o operador `&` pelo `|`. Dessa forma, a condição só será falsa se ambos os valores forem diferentes.
+
+```{r}
+
+```
+
+
+Faça agora um teste com dois valores **A** e **B** recebendo 4 e 3, respectivamente e avalia se **A** for diferente de **B** e maior do que 3, o programa vai imprimir uma mensagem: "o valor está correto!". Caso contrário, ele imprime a mensagem: "não foi desta vez!".
+
+```{r}
+
+```
+
+
+## 6. Criando Funções
+
+Uma função serve para que possamos automatizar os cálculos. Toda vez que você se deparar com algum problema em que será necessária a utilização repetidamente de um cálculo ou uma certa tarefa, crie uma função para automatizar o procedimento. 
+
+Para se criar uma função, basta atribuir um nome a sua função e utilizar a função `function()` com os parâmetros necessários. Por exemplo, vamos criar uma função que recebe dois valores, x1 e x2, e calcula o produto deles. 
+
+```{r}
+# criando a função
+minha_funcao <- function(x1, x2){
+  return(x1 * x2)
+}
+
+# vamos testar
+minha_funcao(x1 = 20, x2 = 2)
+```
+
+Agora é sua vez, crie uma função que recebe dois valores e imprime o maior. 
+
+```{r}
+
+```
+
+Escreva uma função que calcula o valor presente (desconto financeiro) ao receber um valor futuro, uma taxa de juros e um período.
+
+```{r}
+
+```
+
+Faça agora uma função que calcula a média de um vetor e imprime "A média é `media_calculada`". Utilize a função `sum()` que soma os valores e a função `length()` que diz a quantidade de elementos do vetor. 
+
+```{r}
+
+```
+
+Por fim, Escreva uma função que recebe um vetor e se a soma do vetor for maior do que zero e menor do que 1000, ele calcula e retorna a quantidade de elementos, a média e o desvio-padrão. Caso contrário, ele imprime a mensagem: "o valor está fora dos parâmetros exigidos."
+
+```{r}
+
+```
+
+
+
