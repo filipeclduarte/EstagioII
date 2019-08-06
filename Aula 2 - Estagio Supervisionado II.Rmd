@@ -6,7 +6,11 @@ editor_options:
   chunk_output_type: inline
 ---
 
-## 5. Operações Condicionais
+# Aula 2
+
+Nesta aula veremos as operações condicionais, como criar funções e as distribuições de frequência e severidade.
+
+## Operações Condicionais
 
 Os operadores de comparação são:
 
@@ -112,7 +116,7 @@ Faça agora um teste com dois valores **A** e **B** recebendo 4 e 3, respectivam
 ```
 
 
-## 6. Criando Funções
+## Criando Funções
 
 Uma função serve para que possamos automatizar os cálculos. Toda vez que você se deparar com algum problema em que será necessária a utilização repetidamente de um cálculo ou uma certa tarefa, crie uma função para automatizar o procedimento. 
 
@@ -152,5 +156,69 @@ Por fim, Escreva uma função que recebe um vetor e se a soma do vetor for maior
 
 ```
 
+## Distribuições de Sinistros
 
+### Frequência (N)
 
+As distribuições discretas mais comuns que modelam a variável **Frequência de Sinistros** são:
+
+* Poisson
+* Binomial Negativa
+* Geométrica
+
+#### Distribuição de Poisson
+
+A distribuição de Poisson só possui um parâmetros que é o $\lambda$. Uma propriedade interessante da Poisson é que o valor esperado é igual à variância, sendo ambas o valor de $\lambda$. 
+
+Para calcular no `R` a probabilidade de **N** assumir algum valor **n**, basta utilizar a função `dpois()`, em que o primeiro argumento representa **n**, e o segundo o seu parâmetro lambda. 
+
+Calcule a probabilidade de N ser igual a 3 para uma distribuição Poisson com lambda = 2:
+
+```{r}
+dpois(x=3,lambda=2)
+```
+
+Se desejar calcular a probabilidade acumulada, utilize a função `ppois()`. Calcule a probabilidade de **N** ser menor ou igual a 3, para a distribuição do exemplo anterior:
+
+```{r}
+ppois(q=3, lambda=2)
+```
+
+#### Distribuição Binomial Negativa
+
+A distribuição Binomial Negativa possui dois parâmetros, **r** e **p** que representam, respectivamente, a quantidade de suceccos e a probabilidade de sucesso. O seu valor esperado é: $E[N] = \frac{r(1-p)}{p}$, enquanto a variância, $V[N] = \frac{r(1-p)}{p^2}$.
+
+Para calcular no `R` a probabilidade de **N** assumir algum valor **n**, basta utilizar a função `dnbinom()`, em que o primeiro argumento representa **n**, o segundo representa o **r**, e o terceiro a probabilidade de sucesso **p**.
+
+Calcule a probabilidade de N ser igual a 3 para uma distribuição Binomial Negativa com r = 10 e p = 0,8:
+
+```{r}
+dnbinom(x=3,size=10,prob=0.8)
+```
+
+Se desejar calcular a probabilidade acumulada, utilize a função `pnbinom()`. Calcule a probabilidade de **N** ser menor ou igual a 3, para a distribuição do exemplo anterior:
+
+```{r}
+pnbinom(q=3,size=10,prob = 0.8)
+```
+
+#### Distribuição Geométrica
+
+É um caso especial da binomial negativa quando **r** é igual a 1. 
+
+### Severidade
+
+As distribuições discretas mais comuns que modelam a variável **Severidade** ou **Valor de 1 sinistro** são:
+
+* Gama
+* Log-Normal
+* Pareto
+* Weibull
+
+#### Distribuição Gama
+
+#### Distribuição Log-Normal
+
+#### Distribuição Pareto
+
+#### Distribuição Weibull
