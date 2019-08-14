@@ -276,14 +276,13 @@ X = e^{\mu + Z\sigma}
 $$
 em que $Z$ é a variável normal padrão. 
 
-
 Sua função de densidade é:
 
 $$
 f(x;\mu, \sigma) = \frac{1}{x\sigma\sqrt{2\pi}}exp\bigg[{-\frac{(ln(x)-\mu)^2}{2\sigma^2}}\bigg]
 $$
 
-O valor esperado de X, quando Y é uma variável aleatória normal:
+O valor esperado de $X$ (log-Normal) $X = e^Y$, quando $Y$ é uma variável aleatória normal é:
 
 $$
 E[X] = E[e^Y] = e^{(E[Y] + \frac{1}{2}Var[Y])}
@@ -295,8 +294,8 @@ $$
 Var[X] = e^{(2E[Y]+Var[Y])(e^{(Var[Y])-1})}
 $$
 
-
-
-#### Distribuição Pareto
+Para calcular a probabilidade de X ser igual a um valor, utilize a função `plnorm()`, em que temos o parâmetro $\mu$ e $\sigma$.
 
 #### Distribuição Weibull
+
+
