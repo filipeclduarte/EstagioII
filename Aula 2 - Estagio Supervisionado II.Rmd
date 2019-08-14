@@ -1,3 +1,4 @@
+---
 title: "Estágio Supervisionado II"
 output:
   html_document:
@@ -48,6 +49,7 @@ C <- 12
 if(C<10){
   paste(C)
 }
+C <- 1
 ```
 
 Perceba que ao atribuir o valor 12 à C, nada acontece. Isso ocorre porque a condição (C<10) não foi verdadeira. 
@@ -82,7 +84,7 @@ if(D == 5){
 
 ```
 
-Quando desejar utilizar algum operador lógico, se você desejar que duas condições sejam verdadeiras, utilize e `&&`, ao passo que quando desejar que pelo menos uma seja verdadeira, use `|`. Veremos abaixo como aplicar esse operadores ao criar um teste que se **C** for igual a 7 e **D** for igual a 5, o programa imprimirá ambos os valores com um "verdadeiro" em seguida. Se pelo menos uma das condições não forem verdadeiras, imprima os valores e "falso" em seguida. 
+Quando desejar utilizar algum operador lógico, se você desejar que duas condições sejam verdadeiras, utilize e `&`, ao passo que quando desejar que pelo menos uma seja verdadeira, use `|`. Veremos abaixo como aplicar esse operadores ao criar um teste que se **C** for igual a 7 e **D** for igual a 5, o programa imprimirá ambos os valores com um "verdadeiro" em seguida. Se pelo menos uma das condições não forem verdadeiras, imprima os valores e "falso" em seguida. 
 
 ```{r}
 C <- 7
@@ -130,12 +132,16 @@ minha_funcao <- function(x1, x2){
 
 # vamos testar
 minha_funcao(x1 = 20, x2 = 2)
+minha_funcao(20,4)
 ```
 
 Agora é sua vez, crie uma função que recebe dois valores e imprime o maior. 
 
 ```{r}
-
+func <- function(x,y){
+  return(max(x,y))
+}
+func(10,20)
 ```
 
 Escreva uma função que calcula o valor presente (desconto financeiro) ao receber um valor futuro, uma taxa de juros e um período.
@@ -148,12 +154,23 @@ Faça agora uma função que calcula a média de um vetor e imprime "A média é
 
 ```{r}
 
+
 ```
 
 Por fim, Escreva uma função que recebe um vetor e se a soma do vetor for maior do que zero e menor do que 1000, ele calcula e retorna a quantidade de elementos, a média e o desvio-padrão. Caso contrário, ele imprime a mensagem: "o valor está fora dos parâmetros exigidos."
 
 ```{r}
+funcao <- function(x){
+  if(sum(x) > 0 & sum(x) < 1000){
+    return(c(length(x), mean(x), sd(x)))
+  }else{
+    return(paste("o valor está fora dos parâmetros exigidos."))
+  }
+}
 
+funcao(seq(1,10))
+funcao(c(5, 100, 40, 30))
+funcao(rnorm(150, 5, 1))
 ```
 
 ## Distribuições de Sinistros
@@ -217,7 +234,68 @@ As distribuições discretas mais comuns que modelam a variável **Severidade** 
 
 #### Distribuição Gama
 
+A distribuição Gama é da família das distribuições contínuas de dois parametros. Ela é usada para modelar variáveis de valores positivos que possuem assimetria positiva. Sendo assim, a distribuição Gama é normalmente utilizada para representar os valores dos Sinistros ou empregada em Estudos de Sobrevivência. 
+
+Os seus parâmetros são de forma ($\alpha$) e de escala inversa ($\beta$).
+
+Para calcular no `R` a probabilidade de **X** assumir algum valor **x**, basta utilizar a função `dgamma()`, em que o primeiro argumento representa **x**, o segundo sendo o parâmetro de forma $\alpha$ e o parâmetro de escala $\beta$. 
+
+O valor esperado da distribuição gama é: $$E[X] = \frac{\alpha}{\beta}$$
+
+A variância é: $$V[X] = \frac{\alpha}{\beta^2}$$
+
+Dessa forma, calcule a probabilidade de x ser igual a $1000$ para uma distribuição $GAMA(3,0.001)$:
+
+```{r}
+dgamma(x = 1000, shape = 3, rate = 0.001)
+```
+
+
+Se desejar calcular a probabilidade acumulada, utilize a função `pgamma()`. Calcule a probabilidade de **X** ser menor ou igual a 1000, para a distribuição do exemplo anterior:
+
+```{r}
+pgamma(q = 1000, shape = 3, rate = 0.001)
+```
+
+Sua vez: Calcule a probabilidade de um sinistro superar 10000 para a distribuição do exemplo anterior:
+
+```{r}
+
+```
+
+
 #### Distribuição Log-Normal
+
+A variável aleatóriatem distribuição Log-Normal ($X$) quando seu logaritmo natural tem distribuição Normal $Y = ln(X)$.
+
+
+Então, dada uma distribuição Log-Normal $X$ com $\mu$ sendo a média e $\sigma$ o seu desvio-padrão, o Logaritmo de $X$ é distribuido normalmente, como segue:
+
+$$
+X = e^{\mu + Z\sigma}
+$$
+em que $Z$ é a variável normal padrão. 
+
+
+Sua função de densidade é:
+
+$$
+f(x;\mu, \sigma) = \frac{1}{x\sigma\sqrt{2\pi}}exp\bigg[{-\frac{(ln(x)-\mu)^2}{2\sigma^2}}\bigg]
+$$
+
+O valor esperado de X, quando Y é uma variável aleatória normal:
+
+$$
+E[X] = E[e^Y] = e^{(E[Y] + \frac{1}{2}Var[Y])}
+$$
+
+A variância de $X$ (Log-Normal) pode ser expressa em função da Normal ($Y$), sendo $X = exp(Y)$:
+
+$$ 
+Var[X] = e^{(2E[Y]+Var[Y])(e^{(Var[Y])-1})}
+$$
+
+
 
 #### Distribuição Pareto
 

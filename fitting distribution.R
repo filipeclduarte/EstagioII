@@ -51,3 +51,4 @@ cdfcomp(list(fit_ln, fit_ll, fit_P), xlogscale = TRUE, ylogscale = TRUE,
 gofstat(list(fit_ln, fit_ll, fit_P), fitnames = c("lnorm", "llogis", "Pareto"))
 
 
+

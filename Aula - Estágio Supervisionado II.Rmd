@@ -260,13 +260,16 @@ Subtraia as mesmas sequências:
 Calcule o produto das sequências:
 
 ```{r}
-
+s1 <- seq(1,10)  
+s2 <- seq(20, 11)
+s1 * s2
 ```
 
 A divisão entre as sequências:
 
 ```{r}
-
+seq(1,10)/seq(20,11)
+s1/s2
 ```
 
 ### Matriz
@@ -323,7 +326,10 @@ Agora faça a substituição dos NA's das linhas 1 e 2, colunas 2 e 3 por -1:
 
 ```{r}
 # crie um vetor dentro dos [,] para representar mais de uma linha e/ou coluna
-
+mat
+mat[c(1,2),c(2,3)] <- -1
+mat[,3] <- NA
+mat
 ```
 
 ### Data Frame
@@ -428,6 +434,12 @@ Estatística descritiva:
 
 ```{r}
 summary(base$valores)
+
+mean(base[,2])
+mean(base$valores[seq(1,10)])
+mean(base$valores[seq(40,50)])
+hist(base$valores, breaks = 10)
+
 ```
 
 ## Operações condicionais
