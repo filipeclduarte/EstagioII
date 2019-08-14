@@ -201,6 +201,20 @@ Se desejar calcular a probabilidade acumulada, utilize a função `ppois()`. Cal
 ppois(q=3, lambda=2)
 ```
 
+Sua vez: Calcule a probabilidade da quantidade de sinistros ser maior do que 10 para a distribuição do exemplo anterior:
+
+```{r}
+
+```
+
+Se o objetivo for calcular o valor do quantil a partir de uma dada probabilidade, utilize a função `qpois()`, em que o primeiro argumento da função será a probabilidade. Por exemplo, qual a quantidade de sinistro quando a probablidade de N ser menor do que n é de 90%? 
+
+```{r}
+qpois(p = 0.9, lambda = 2)
+```
+
+
+
 #### Distribuição Binomial Negativa
 
 A distribuição Binomial Negativa possui dois parâmetros, **r** e **p** que representam, respectivamente, a quantidade de suceccos e a probabilidade de sucesso. O seu valor esperado é: $E[N] = \frac{r(1-p)}{p}$, enquanto a variância, $V[N] = \frac{r(1-p)}{p^2}$.
@@ -219,11 +233,26 @@ Se desejar calcular a probabilidade acumulada, utilize a função `pnbinom()`. C
 pnbinom(q=3,size=10,prob = 0.8)
 ```
 
+Sua vez: Calcule a probabilidade de N ser maior do que 4, utilizando-se das informações do exemplo acima.
+
+```{r}
+
+```
+
+Para calcular o quantil, a partir da probabilidade, utilize a função `qnbinom()`. 
+
+Sua vez: Calcule a quantidade de sinistros n de tal maneira que a probabilidade de N ser maior do que n é de 0.2:
+
+```{r}
+
+```
+
+
 #### Distribuição Geométrica
 
 É um caso especial da binomial negativa quando **r** é igual a 1. 
 
-### Severidade
+### Severidade (X)
 
 As distribuições discretas mais comuns que modelam a variável **Severidade** ou **Valor de 1 sinistro** são:
 
@@ -250,7 +279,6 @@ Dessa forma, calcule a probabilidade de x ser igual a $1000$ para uma distribui�
 dgamma(x = 1000, shape = 3, rate = 0.001)
 ```
 
-
 Se desejar calcular a probabilidade acumulada, utilize a função `pgamma()`. Calcule a probabilidade de **X** ser menor ou igual a 1000, para a distribuição do exemplo anterior:
 
 ```{r}
@@ -262,6 +290,15 @@ Sua vez: Calcule a probabilidade de um sinistro superar 10000 para a distribuiç
 ```{r}
 
 ```
+
+Para calcular o quantil a partir da probabilidade, use a função `qgamma()`. 
+
+Sua vez: Qual o valor do sinistro uma vez que a probabilidade de X ser menor do que x é de 0.9, seguindo a mesma distribuição acima:
+
+```{r}
+
+```
+
 
 
 #### Distribuição Log-Normal
@@ -294,8 +331,81 @@ $$
 Var[X] = e^{(2E[Y]+Var[Y])(e^{(Var[Y])-1})}
 $$
 
-Para calcular a probabilidade de X ser igual a um valor, utilize a função `plnorm()`, em que temos o parâmetro $\mu$ e $\sigma$.
+Para calcular a probabilidade de X ser igual a algum valor, utilize a função `dlnorm()`, em que temos o parâmetro $\mu$ e $\sigma$. Por exemplo, calcule a probabilidade, a partir de uma distribuição Log-Normal$(\mu = 5, \sigma = 3)$, de X ser menor do que 1000:
+
+```{r}
+dlnorm(x = 1000, meanlog = 5, sdlog = 3)
+```
+
+Para calcular a probabilidade acumulada, utilize a função `plnorm()`.
+
+Sua vez: Calcule a probabilidade de X ser maior do que 1000 e menor do que 2000, utilizando-se da mesma distribuição do exemplo anterior:
+
+```{r}
+
+
+```
+
+Ainda: Calcule a probabilidade de X estar entre 1500 e 800, utilizando a distribuição Log-Normal com $\mu = 4$ e $\sigma = 2.8$:
+
+```{r}
+
+
+```
+
+
+A função para calcular o quantil, para uma distribuição Log-Normal é `qlnorm()`.
+
+Sua vez: Qual o valor do sinistro x a uma probabilidade de 85%, para uma distribuição Log-Normal com parâmetros $\mu = 6$ e $\sigma = 2.2$?
+
+```{r}
+
+```
+
 
 #### Distribuição Weibull
 
+A distribuição Weibull é normalmente utilizada em análise de sobrevivência e possui dois parâmetros ($\lambda, k$). De uma forma geral, suas aplicações objetivam determinar o tempo de vida médio e a taxa de falhas em função do tempo da população analisada. Além disso, é utilizada para modelar a distribuição "Valor de 1 sinistro" ou Severidade, uma vez que é assume apenas valores positivos. 
+
+A função de densidade da distribuição Weibull para $x \ge 0$ é dada por:
+
+$$
+f(x;\lambda,k) = \frac{k}{\lambda}\bigg(\frac{x}{\lambda}\bigg)^{k-1}e^{-(x/\lambda)^k}
+$$
+
+Em que, $\lambda$ está definido de 0 a $+\infty$, é medido na mesma unidade que $x$ e é denominado de parâmetro de escala. "*Do ponto de vista estatístico λ é determinado parâmetro de escala pois variações no seu valor enquanto k é mantido constante causam a compressão ou expansão do gráfico*" (https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_de_Weibull).
+
+Ademais, o parâmetro k está definido de 0 a + $\infty$ e é adimensional. Do ponto de vista estatístico k é o parâmetro de forma. "*Variações no valor de k alteram drasticamente o comportamento da distribuição. Para k<1, o fator exponencial da distribuição é predominante e a curva fica em um formato de J e para k=1 a distribuição se reduz a uma distribuição exponencial. Para k>1 o fator polinomial da distribuição é predominante*" (https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_de_Weibull).
+
+O valor esperado e a variância da distribuição Weibull são, respectivamente: 
+$${\displaystyle \mathrm {E} (X)=\lambda \Gamma \left(1+{\frac {1}{k}}\right)\,}$$
+
+$${\displaystyle {\textrm {var}}(X)=\lambda ^{2}\left[\Gamma \left(1+{\frac {2}{k}}\right)-\left(\Gamma \left(1+{\frac {1}{k}}\right)\right)^{2}\right]\,.} $$
+
+Para calcular a probabilidade de x ser igual a 1000 para uma distribuição com parâmetro de forma (shape) $k = 0.8$ e de escala (scale) $\lambda = 2000$, use o código abaixo:
+
+```{r}
+dweibull(1000, shape = 0.8,scale = 2000)
+```
+
+A função para computar a probabilidade acumulada por uma Weibull é `pweibull()`
+Sua vez: Seguindo a mesma lógica das distribuições anteriores, calcule a probabilidade, para a mesma distribuição weibull acima, de X ser menor do que 1000:
+
+```{r}
+
+```
+
+
+Sua vez: Calcule a probabilidade de X estar entre 1000 e 2000, a partir da mesma distribuição Weibull:
+
+```{r}
+
+```
+
+A função para calcular o quantil para uma distribuição Weibull é `qweibull()`
+Sua vez: Calcule o valor do sinistro quando a probabilidade é de 60%?
+
+```{r}
+
+```
 
