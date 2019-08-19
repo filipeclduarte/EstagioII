@@ -139,7 +139,11 @@ Agora é sua vez, crie uma função que recebe dois valores e imprime o maior.
 
 ```{r}
 func <- function(x,y){
-  return(max(x,y))
+  if(x>=y){
+    return(x)
+  }else{
+    return(y)
+  }
 }
 func(10,20)
 ```
@@ -147,14 +151,23 @@ func(10,20)
 Escreva uma função que calcula o valor presente (desconto financeiro) ao receber um valor futuro, uma taxa de juros e um período.
 
 ```{r}
+vp <- function(v, i, t){
+  return(v/(1+i)^t)
+}
 
+vp(1, 0.06, 1)
 ```
 
 Faça agora uma função que calcula a média de um vetor e imprime "A média é `media_calculada`". Utilize a função `sum()` que soma os valores e a função `length()` que diz a quantidade de elementos do vetor. 
 
 ```{r}
+media <- function(x){
+  media_calculada <- sum(x)/length(x)
+  paste("A média é", round(media_calculada,4))
+}
+media(c(1, 2, 7, 2, 5, 7, 1, 7, 9))
 
-
+class(media(rnorm(100, 5, 3)))
 ```
 
 Por fim, Escreva uma função que recebe um vetor e se a soma do vetor for maior do que zero e menor do que 1000, ele calcula e retorna a quantidade de elementos, a média e o desvio-padrão. Caso contrário, ele imprime a mensagem: "o valor está fora dos parâmetros exigidos."
@@ -195,16 +208,26 @@ Calcule a probabilidade de N ser igual a 3 para uma distribuição Poisson com l
 dpois(x=3,lambda=2)
 ```
 
+
+```{r}
+# P(N=10)
+dpois(10, 2)
+```
+
 Se desejar calcular a probabilidade acumulada, utilize a função `ppois()`. Calcule a probabilidade de **N** ser menor ou igual a 3, para a distribuição do exemplo anterior:
 
 ```{r}
+# P(N<=3)
 ppois(q=3, lambda=2)
+
+# P(N>3)
+1 - ppois(q = 3, lambda = 2)
 ```
 
 Sua vez: Calcule a probabilidade da quantidade de sinistros ser maior do que 10 para a distribuição do exemplo anterior:
 
 ```{r}
-
+1-ppois(10,2)
 ```
 
 Se o objetivo for calcular o valor do quantil a partir de uma dada probabilidade, utilize a função `qpois()`, em que o primeiro argumento da função será a probabilidade. Por exemplo, qual a quantidade de sinistro quando a probablidade de N ser menor do que n é de 90%? 
@@ -214,10 +237,9 @@ qpois(p = 0.9, lambda = 2)
 ```
 
 
-
 #### Distribuição Binomial Negativa
 
-A distribuição Binomial Negativa possui dois parâmetros, **r** e **p** que representam, respectivamente, a quantidade de suceccos e a probabilidade de sucesso. O seu valor esperado é: $E[N] = \frac{r(1-p)}{p}$, enquanto a variância, $V[N] = \frac{r(1-p)}{p^2}$.
+A distribuição Binomial Negativa possui dois parâmetros, **r** e **p** que representam, respectivamente, a quantidade de sucessos e a probabilidade de sucesso. O seu valor esperado é: $E[N] = \frac{r(1-p)}{p}$, enquanto a variância, $V[N] = \frac{r(1-p)}{p^2}$.
 
 Para calcular no `R` a probabilidade de **N** assumir algum valor **n**, basta utilizar a função `dnbinom()`, em que o primeiro argumento representa **n**, o segundo representa o **r**, e o terceiro a probabilidade de sucesso **p**.
 
@@ -225,6 +247,8 @@ Calcule a probabilidade de N ser igual a 3 para uma distribuição Binomial Nega
 
 ```{r}
 dnbinom(x=3,size=10,prob=0.8)
+
+dnbinom(x = 10, size = 10, prob = 0.8)
 ```
 
 Se desejar calcular a probabilidade acumulada, utilize a função `pnbinom()`. Calcule a probabilidade de **N** ser menor ou igual a 3, para a distribuição do exemplo anterior:
@@ -236,7 +260,7 @@ pnbinom(q=3,size=10,prob = 0.8)
 Sua vez: Calcule a probabilidade de N ser maior do que 4, utilizando-se das informações do exemplo acima.
 
 ```{r}
-
+1 - pnbinom(q = 4, size = 10, prob = 0.8)
 ```
 
 Para calcular o quantil, a partir da probabilidade, utilize a função `qnbinom()`. 
@@ -244,6 +268,7 @@ Para calcular o quantil, a partir da probabilidade, utilize a função `qnbinom(
 Sua vez: Calcule a quantidade de sinistros n de tal maneira que a probabilidade de N ser maior do que n é de 0.2:
 
 ```{r}
+qnbinom(p = 0.2, size = 10, prob = 0.8)
 
 ```
 
@@ -258,7 +283,7 @@ As distribuições discretas mais comuns que modelam a variável **Severidade** 
 
 * Gama
 * Log-Normal
-* Pareto
+* Pareto *
 * Weibull
 
 #### Distribuição Gama
@@ -288,6 +313,7 @@ pgamma(q = 1000, shape = 3, rate = 0.001)
 Sua vez: Calcule a probabilidade de um sinistro superar 10000 para a distribuição do exemplo anterior:
 
 ```{r}
+1-pgamma(10000,shape = 3, rate = 0.001)
 
 ```
 
