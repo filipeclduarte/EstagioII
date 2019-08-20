@@ -1,0 +1,76 @@
+---
+title: "Trabalho - 3ª Avaliação"
+author: "Filipe Coelho de Lima Duarte"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Projeto da disciplina Estágio Supervisionado II do semestre 2019.1
+
+O trabalho consistirá em um projeto em que cada aluno possuirá uma base de dados diferente. 
+
+O projeto é dividido em duas etapas:
+
+### 1. Considere os dados referente ao seu nome contidos na pasta. Por exemplo, Antonio Roberto utilizará o arquivo denominado "base_antonio.csv". 
+ 
+  a) Faça as estatísticas descritivas da variável "valor" que se refere aos sinistros.
+
+  b) Plote um histograma para a variável "valor".
+
+  c) Estime os parâmetros pelo método da máxima verossimilhança para as distribuições: "normal", "gamma", "lognormal", "weibull", "pareto". 
+
+  d) Apresente os gráficos dos modelos probabilísticos estimados em relação à distribuição empírica. 
+  
+  e) Indique qual o modelo que melhor se ajusta aos dados dos sinistros e explique o porquê. 
+
+### 2. Calcule o Prêmio Puro pelo Princípio do Valor Esperado para a Carteira pelo Modelo de Risco Coletivo. Utilize o carregamento de segurança $\theta = 10$%.
+
+- Adrilayne 
+
+Uitilzará uma base de dados que corresponde aos sinistros de uma carteira de seguro saúde.
+A distribuição referente à frequência de sinistros $N$ será a Binomial Negativa com parâmetros $r=3$ e $p=0.9$
+A quantidade de segurados na carteira é 10000.
+
+- Antonio Roberto
+
+Utilizará uma base de dados que corresponde aos sinistros de uma carteira de automóvel. 
+A distribuição referente à frequência de sinistros por apólice será uma Binomial Negativa com parâmetros $r=2$ e $p=0.85$.
+A quantidade de segurados na carteira é 5000.
+
+- José de Matos 
+
+Utilizará uma base de dados que corresponde aos sinistros de uma carteira de seguro de incêndio. 
+A distribuição referente à frequência de sinistros por apólice será uma Binomial Negativa com parâmetros $r=2$ e $p=0.98$.
+A quantidade de segurados na carteira é 1000.
+
+- Lucas
+
+Utilizará uma base de dados que corresponde aos sinistros de uma carteira de seguro de responsabilidade civil.
+A distribuição referente à frequência de sinistros por apólice é uma Poisson com parâmetro $\lambda = 1$. 
+A quantidade de segurados na carteira é 600.
+
+- Ludmila
+
+Utilizará uma base de dados que corresponde aos sinistros de uma carteira de seguro viagem. 
+A distribuição referente à frequêcia de sinistros por apólice será uma Poisson com parâmetro $\lambda = 2$. 
+A quantidade de segurados na carteira é 5000.
+
+### 3. Calcule o Prêmio Comercial com carregamento para despesas $\alpha = 18$%.
+
+### 4. Elabore 2 contratos de Resseguro para mitigar os riscos da carteira de sua seguradora. 
+
+O primeiro contrato será proporcional e o segundo não proporcional. Além disso, para cada tipo de contrato, você terá que elaborar 3 cenários para cada contrato de Resseguro e apresentar:
+
+a) Prêmio Puro e Comercial Retido
+
+b) Prêmio Puro e Comercial da Resseguradora considerando o carregamento para despesas da resseguradora de 20%.
+
+c) Sinistro Retido 
+
+d) Sinistro de responsabilidade da Resseguradora
+
+e) Probabilidade dos Sinistros Retidos Superarem o Prêmio Puro Retido. 
+
+### 5. Calcular, a partir do quesito anterior - Contrato de Resseguro, a Reserva de Risco ($\mu$) que garanta a Solvência da Seguradora em 95% ao longo de 1 ano. 
+

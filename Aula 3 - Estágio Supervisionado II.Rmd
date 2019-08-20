@@ -24,14 +24,16 @@ $$
 
 Dessa forma, dizemos que $\hat{\theta}$ é um estimador de máxima verossimilhança (EMV) para  $\theta = \theta_0$.
 
+
 ## fitditsrplus
+
+O pacote `fitdistrplus` estima os parâmetros dos modelos pela máxima verossimilhança. Portanto, faremos uso dessa técnica para estimar os parâmetros dos modelos para os dados dos sinistros. 
 
 Carregando biblioteca:
 
 ```{r}
 library(fitdistrplus)
 ```
-
 
 Carregando dados:
 
