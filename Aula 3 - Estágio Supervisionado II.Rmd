@@ -10,7 +10,7 @@ output:
 
 # Aula 3 
 
-Nesta aula veremos como estimar os parâmetros pelo método da máxima verossimilhança para algumas distribuições e, em seguida, como selecionar qual o modelo com o melhor ajuste. 
+Nesta aula veremos como estimar os parâmetros das distribuições pelo método da máxima verossimilhança. Em seguida, aprenderemos como selecionar o modelo com o melhor ajuste para a amostra. 
 
 ## Método da Máxima Verossimilhança
 
@@ -131,11 +131,22 @@ Testando a loglogistica e pareto:
 ```{r}
 fit_ll <- fitdist(sinistro, "llogis", start = list(shape = 1, scale = 500))
 fit_P  <- fitdist(sinistro, "pareto", start = list(shape = 1, scale = 500))
-cdfcomp(list(fit_ln, fit_ll, fit_P), xlogscale = TRUE, ylogscale = TRUE,
-        legendtext = c("lognormal", "loglogistic", "Pareto"), lwd=2)
-
-gofstat(list(fit_ln, fit_ll, fit_P), fitnames = c("lnorm", "llogis", "Pareto"))
 ```
 
+```{r}
+summary(fit_ll)
+summary(fit_P)
+```
+```{r}
+par(mfrow=c(2,2))
+plot.legend <- c("lognormal", "loglogistic", "Pareto")
+denscomp(list(fit_ln, fit_ll, fit_P), legendtext = plot.legend)
+cdfcomp (list(fit_ln, fit_ll, fit_P), legendtext = plot.legend)
+qqcomp  (list(fit_ln, fit_ll, fit_P), legendtext = plot.legend)
+ppcomp  (list(fit_ln, fit_ll, fit_P), legendtext = plot.legend)
+```
 
+```{r}
+gofstat(list(fit_w, fit_g, fit_ln, fit_ll, fit_P), fitnames = c("Weibull","Gama","LogNormal", "Loglogística", "Pareto"))
+```
 
